@@ -1,0 +1,10 @@
+print("welcome to my game collection")
+print("1.Start Game")
+print("2.View Score")
+print("3.Exit")
+choice = input("Choose an option:")
+print("You choose option:" , choice)
+if choice == "1":
+    print("Choose your game:")
+    print("1.say the number!")
+    print("2.Rock , paper , scissors")

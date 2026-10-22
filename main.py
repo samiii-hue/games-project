@@ -32,6 +32,7 @@ def play_words_gussing():
      attemps = 3
      print("Word Gussing:)))))")
      print("Hint:" , hint)
+     print("Word:", "_" * len(word))
      print("You have" , attemps ,"attemps.")
      
      while attemps > 0:
@@ -47,6 +48,16 @@ def play_words_gussing():
                
      print("Game over! The word was:" , word)
      return False
+def play_words_gussing_again():
+    while True:
+        result = play_words_gussing()
+        if result:
+            scores["Word Gussing"] += 1
+            print("You earned 1 point!")
+        answer = input("Play again? (yes/no):" ).strip().lower()
+        if answer != "yes":
+            print("Returning to Game Menu...")
+            break
 
 
 
@@ -76,8 +87,9 @@ while True:
         if game_choice == "9":
              print("Returning to the Main Menu...!")
         elif game_choice == "1":
-            result = play_words_gussing()
-            if result: 
+            result = play_words_gussing_again()
+            if result:
+                scores["Word Gussing"] += 1
                 print("You earned points!")
         elif game_choice in ["3", "2", "4", "5", "6", "7", "8"]:
             print("Your selected game number is:", game_choice)

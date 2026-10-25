@@ -59,7 +59,39 @@ def play_words_gussing_again():
             print("Returning to Game Menu...")
             break
 
+def play_rock_paper_scissors():
+    while True:
+        choice = ["rock" , "paper" , "scissors"]
+        computer = random.choice(choice)
+    
+        player = input("Choose rock,paper,scissors:").strip().lower()
+    
+        while player not in choice:
+          print("Invalid choice! Please try again.")
+          player = input("Choose rock,paper,scissors:").strip().lower()
+        print("You chose:" , player)
+        print("Computer chose :" , computer)
+        if player == computer:
+          print("Same choice!")
+        elif player == "rock" and computer == "scissors" :
+          print ("You win!")
+          print("You earned points!")
+          scores["Rock,Paper,Scissors"] += 1
+        elif player == "paper" and computer == "rock":
+          print("You win!")
+          print("You earned points!")
+          scores["Rock,Paper,Scissors"] += 1
+        elif player == "scissors" and computer == "paper":
+          print("You win!")
+          print("You earned points!")
+          scores["Rock,Paper,Scissors"] += 1
+        else:
+          print("Computer wins!")
+        answer = input ("Play again? (yes/no): ").strip().lower()
+        if answer != "yes":
+            print("Returning to Game Menu...")
 
+            break
 
 while True:
     print("******MAIN MENU******")
@@ -88,9 +120,9 @@ while True:
              print("Returning to the Main Menu...!")
         elif game_choice == "1":
             result = play_words_gussing_again()
-            if result:
-                scores["Word Gussing"] += 1
-                print("You earned points!")
+        elif game_choice == "2":
+            play_rock_paper_scissors()
+
         elif game_choice in ["3", "2", "4", "5", "6", "7", "8"]:
             print("Your selected game number is:", game_choice)
         else :
@@ -108,3 +140,7 @@ while True:
         
     else:
         print("Some thing went wrong! Please try again.")
+
+
+
+       

@@ -92,6 +92,41 @@ def play_rock_paper_scissors():
             print("Returning to Game Menu...")
 
             break
+def play_scrambled_words():
+    words = ["apple","piano","librery","football","rainbow","school","chocolate","monkey","volleyball","butterfly"]
+    while True:
+        word = random.choice(words)
+        scrambled = random.sample(word,len(word))
+        scrambled = "".join(scrambled)
+        attempts = 3
+        print("SCRAMBLED WORDS!!!")
+        print("Guess the original word:")
+        print("Words:" , scrambled)
+        print("You have:" , attempts)
+        check = True
+        while attempts > 0 and check:
+            guess = input("Your guess: ").strip().lower()
+            attempts -= 1
+            if guess == word:
+                print ("Correct! Great job!")
+                scores["Scrambled Words"] += 1
+                print("you earned 1 point!")
+                break
+            if 1 <= attempts <= 3:
+                answer = input("Play again? (yes/no):").strip().lower()
+                if answer == "yes":
+                    continue
+                if answer == "no":
+                    print("Returning to Main Menu...")
+                    check = False
+                    break
+                else:
+                    print("Invalid choice!")
+                    print("Returning to Main Menu...")
+                    break
+
+        if check == False:
+            break   
 
 while True:
     print("******MAIN MENU******")
@@ -106,7 +141,7 @@ while True:
         print("GAME MENU!!!!!!!")
         print("1.Word Gussing")
         print("2.Rock,paper,scissors")
-        print("3.Scrambeld Words")
+        print("3.Scrambled Words")
         print("4.Fun quiz")
         print("5.Number Gussing")
         print("6.Dooz")
@@ -122,7 +157,9 @@ while True:
             result = play_words_gussing_again()
         elif game_choice == "2":
             play_rock_paper_scissors()
-
+        elif game_choice == "3":
+            play_scrambled_words()
+        
         elif game_choice in ["3", "2", "4", "5", "6", "7", "8"]:
             print("Your selected game number is:", game_choice)
         else :
@@ -140,6 +177,8 @@ while True:
         
     else:
         print("Some thing went wrong! Please try again.")
+
+        
 
 
 
